@@ -13,7 +13,9 @@ namespace FilmesAPI.Controllers
         /// Adiciona um filme na lista de filmes.
         /// </summary>
         /// <param name="filme">Passa como um parâmetro um filme</param>
-        public void AdicionarFilme(Filme filme)
+
+        [HttpPost] // Cria um recurso novo no sistema
+        public void AdicionarFilme([FromBody]Filme filme)
         {
             filmes.Add(filme);
             Console.WriteLine(filme.Titulo);
