@@ -12,27 +12,43 @@ namespace FilmesAPI.Controllers
         private static int id = 1;
 
         /// <summary>
-        /// Adiciona um filme na lista de filmes.
+        /// Método responsável por cadastrar um filme
         /// </summary>
-        /// <param name="filme">Passa como um parâmetro um filme</param>
+        /// <param name="filme">Passa um objeto do tipo Filme como parâmetro</param>
+        /// <returns>Retorna se o filme foi cadastrado</returns>
 
         [HttpPost] // Cria um recurso novo no sistema
-        public void AdicionarFilme([FromBody] Filme filme)
+        public IActionResult AdicionarFilme([FromBody] Filme filme)
         {
             filme.Id = id++;
             filmes.Add(filme);
             Console.WriteLine(filme.Titulo);
+            return CreatedAtAction(nameof(RecuperarFilmesPorID), new { Id = filme.Id }, filme);
             
         }
+        /// <summary>
+        /// Lista todos os filmes já cadastrados
+        /// </summary>
+        /// <returns>Retorna os filmes cadastrados no sistema</returns>
         [HttpGet]
-        public IEnumerable<Filme> RecuperarFilmes()
+        public IActionResult RecuperarFilmes()
         {
-            return filmes;
+            return Ok(filmes);
         }
+        /// <summary>
+        /// Lista o filme de acordo com o ID
+        /// </summary>
+        /// <param name="id">Passa o id do filme que deseja que seja listado</param>
+        /// <returns>retorna o filme que possui o ID informado, caso não exista esse filme, retorna o erro 404</returns>
         [HttpGet("{id}")]
-        public Filme RecuperarFilmesPorID(int id)
+        public IActionResult RecuperarFilmesPorID(int id)
         {
-            return filmes.FirstOrDefault(filme => filme.Id == id);
+            Filme filme = filmes.FirstOrDefault(filme => filme.Id == id);
+            if(filme != null)
+            {
+                return Ok(filme);
+            }
+            return NotFound();
         }
     }
 }
