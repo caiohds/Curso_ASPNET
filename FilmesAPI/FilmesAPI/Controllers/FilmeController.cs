@@ -1,47 +1,36 @@
-﻿using FilmesAPI.models;
+﻿using FilmesAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace FilmesAPI.Controllers
+namespace FilmesApi.Controllers
 {
-    [ApiController] // declara que a classe é um controlador
+    [ApiController]
     [Route("[controller]")]
     public class FilmeController : ControllerBase
     {
         private static List<Filme> filmes = new List<Filme>();
         private static int id = 1;
 
-        /// <summary>
-        /// Método responsável por cadastrar um filme
-        /// </summary>
-        /// <param name="filme">Passa um objeto do tipo Filme como parâmetro</param>
-        /// <returns>Retorna se o filme foi cadastrado</returns>
-
-        [HttpPost] // Cria um recurso novo no sistema
-        public IActionResult AdicionarFilme([FromBody] Filme filme)
+        [HttpPost]
+        public IActionResult AdicionaFilme([FromBody] Filme filme)
         {
             filme.Id = id++;
             filmes.Add(filme);
-            Console.WriteLine(filme.Titulo);
-            return CreatedAtAction(nameof(RecuperarFilmesPorID), new { Id = filme.Id }, filme);
-            
+            return CreatedAtAction(nameof(RecuperaFilmesPorId), new { Id = filme.Id }, filme);
         }
-        /// <summary>
-        /// Lista todos os filmes já cadastrados
-        /// </summary>
-        /// <returns>Retorna os filmes cadastrados no sistema</returns>
+
         [HttpGet]
-        public IActionResult RecuperarFilmes()
+        public IActionResult RecuperaFilmes()
         {
             return Ok(filmes);
         }
-        /// <summary>
-        /// Lista o filme de acordo com o ID
-        /// </summary>
-        /// <param name="id">Passa o id do filme que deseja que seja listado</param>
-        /// <returns>retorna o filme que possui o ID informado, caso não exista esse filme, retorna o erro 404</returns>
+
         [HttpGet("{id}")]
-        public IActionResult RecuperarFilmesPorID(int id)
+        public IActionResult RecuperaFilmesPorId(int id)
         {
             Filme filme = filmes.FirstOrDefault(filme => filme.Id == id);
             if(filme != null)
