@@ -7,7 +7,7 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class FilmeController : ControllerBase
     {
-        private static List <Filme> filmes = new List<Filme>();
+        private static List<Filme> filmes = new List<Filme>();
 
         /// <summary>
         /// Adiciona um filme na lista de filmes.
@@ -15,7 +15,7 @@ namespace FilmesAPI.Controllers
         /// <param name="filme">Passa como um parâmetro um filme</param>
 
         [HttpPost] // Cria um recurso novo no sistema
-        public void AdicionarFilme([FromBody]Filme filme)
+        public void AdicionarFilme([FromBody] Filme filme)
         {
             filmes.Add(filme);
             Console.WriteLine(filme.Titulo);
