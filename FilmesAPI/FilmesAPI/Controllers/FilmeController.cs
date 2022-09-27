@@ -8,6 +8,7 @@ namespace FilmesAPI.Controllers
     public class FilmeController : ControllerBase
     {
         private static List<Filme> filmes = new List<Filme>();
+        private static int id = 1;
 
         /// <summary>
         /// Adiciona um filme na lista de filmes.
@@ -17,8 +18,15 @@ namespace FilmesAPI.Controllers
         [HttpPost] // Cria um recurso novo no sistema
         public void AdicionarFilme([FromBody] Filme filme)
         {
+            filme.Id = id++;
             filmes.Add(filme);
             Console.WriteLine(filme.Titulo);
+            
+        }
+        [HttpGet]
+        public IEnumerable<Filme> RecuperarFilmes()
+        {
+            return filmes;
         }
     }
 }
