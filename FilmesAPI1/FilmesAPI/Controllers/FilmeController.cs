@@ -24,7 +24,7 @@ namespace FilmesAPI.Controllers
         public IActionResult AdicionarFilme([FromBody] Filme filme)
         {
             _context.Filmes.Add(filme);
-            Console.WriteLine(filme.Titulo);
+            _context.SaveChanges();
             return CreatedAtAction(nameof(RecuperarFilmesPorID), new { Id = filme.Id }, filme);
             
         }

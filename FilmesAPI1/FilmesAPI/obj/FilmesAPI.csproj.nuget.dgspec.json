@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj": {}
+    "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI1\\FilmesAPI\\FilmesAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj": {
+    "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI1\\FilmesAPI\\FilmesAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj",
+        "projectUniqueName": "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI1\\FilmesAPI\\FilmesAPI.csproj",
         "projectName": "FilmesAPI",
-        "projectPath": "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI\\FilmesAPI\\FilmesAPI.csproj",
+        "projectPath": "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI1\\FilmesAPI\\FilmesAPI.csproj",
         "packagesPath": "C:\\Users\\caioh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI\\FilmesAPI\\obj\\",
+        "outputPath": "C:\\Users\\caioh\\OneDrive\\Documents\\Projetos_Programacao\\Asp net\\FilmesAPI1\\FilmesAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\caioh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,13 +50,13 @@
               "target": "Package",
               "version": "[6.0.9, )"
             },
-            "MySql.EntityFrameworkCore": {
+            "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[6.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.4.0, )"
             }
           },
           "imports": [
