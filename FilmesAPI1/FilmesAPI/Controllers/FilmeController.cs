@@ -33,9 +33,9 @@ namespace FilmesAPI.Controllers
         /// </summary>
         /// <returns>Retorna os filmes cadastrados no sistema</returns>
         [HttpGet]
-        public IActionResult RecuperarFilmes()
+        public IEnumerable<Filme> RecuperarFilmes()
         {
-            return Ok(_context.Filmes);
+            return _context.Filmes;
         }
         /// <summary>
         /// Lista o filme de acordo com o ID
