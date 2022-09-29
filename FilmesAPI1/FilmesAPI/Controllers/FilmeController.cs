@@ -75,6 +75,11 @@ namespace FilmesAPI.Controllers
 
             return NoContent();
         }
+        /// <summary>
+        /// Exclui permanentemente um filme cadastrado no banco de dados
+        /// </summary>
+        /// <param name="id">Id do filme que será deletado</param>
+        /// <returns>Retorna o status de no content</returns>
         [HttpDelete("{id}")]
         public IActionResult DeletarFilme(int id)
         {
