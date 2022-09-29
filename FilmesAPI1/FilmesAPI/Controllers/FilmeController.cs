@@ -1,4 +1,5 @@
 ﻿using FilmesAPI.data;
+using FilmesAPI.data.dtos;
 using FilmesAPI.models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -21,8 +22,15 @@ namespace FilmesAPI.Controllers
         /// <returns>Retorna se o filme foi cadastrado</returns>
 
         [HttpPost] // Cria um recurso novo no sistema
-        public IActionResult AdicionarFilme([FromBody] Filme filme)
+        public IActionResult AdicionarFilme([FromBody] CreateFilmeDto filmeDto)
         {
+            Filme filme = new Filme()
+            {
+                Titulo = filmeDto.Titulo,
+                Diretor = filmeDto.Diretor,
+                Duracao = filmeDto.Duracao,
+                Genero = filmeDto.Genero
+            };
             _context.Filmes.Add(filme);
             _context.SaveChanges();
             return CreatedAtAction(nameof(RecuperarFilmesPorID), new { Id = filme.Id }, filme);
