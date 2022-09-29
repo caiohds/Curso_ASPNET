@@ -34,7 +34,7 @@ namespace FilmesAPI.Controllers
             _context.Filmes.Add(filme);
             _context.SaveChanges();
             return CreatedAtAction(nameof(RecuperarFilmesPorID), new { Id = filme.Id }, filme);
-            
+
         }
         /// <summary>
         /// Lista todos os filmes já cadastrados
@@ -54,9 +54,18 @@ namespace FilmesAPI.Controllers
         public IActionResult RecuperarFilmesPorID(int id)
         {
             Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-            if(filme != null)
+            if (filme != null)
             {
-                return Ok(filme);
+                ReadFilmeDto filmeDTO = new ReadFilmeDto
+                {
+                    Titulo = filme.Titulo,
+                    Diretor = filme.Diretor,
+                    Duracao = filme.Duracao,
+                    Id = filme.Id,
+                    Genero = filme.Genero,
+                    HoraDaConsulta = DateTime.Now
+                };
+                return Ok(filmeDTO);
             }
             return NotFound();
         }
@@ -68,17 +77,17 @@ namespace FilmesAPI.Controllers
         /// <returns>retorna o status de no content</returns>
 
         [HttpPut("{id}")]
-        public IActionResult AtualizaFilme(int id, [FromBody] Filme filmenovo)
+        public IActionResult AtualizaFilme(int id, [FromBody] UpdateFilmeDto filmeDto)
         {
             Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-            if(filme == null)
+            if (filme == null)
             {
                 return NotFound();
             }
-            filme.Titulo = filmenovo.Titulo;
-            filme.Genero = filmenovo.Genero;
-            filme.Diretor = filmenovo.Diretor;
-            filme.Duracao = filmenovo.Duracao;
+            filme.Titulo = filmeDto.Titulo;
+            filme.Genero = filmeDto.Genero;
+            filme.Diretor = filmeDto.Diretor;
+            filme.Duracao = filmeDto.Duracao;
             _context.SaveChanges();
 
             return NoContent();
@@ -92,7 +101,7 @@ namespace FilmesAPI.Controllers
         public IActionResult DeletarFilme(int id)
         {
             Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-            if(filme == null)
+            if (filme == null)
             {
                 return NotFound();
             }
