@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FilmesAPI.data;
+using FilmesAPI.data.dtos.Endereco;
 using FilmesAPI.models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -76,4 +77,4 @@ namespace FilmesAPI.Controllers
 
     }
 }
-}
+
