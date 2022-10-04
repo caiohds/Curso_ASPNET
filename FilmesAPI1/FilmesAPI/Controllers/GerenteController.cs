@@ -29,7 +29,7 @@ namespace FilmesAPI.Controllers
 
         public IActionResult RecuperaGerentesPorId (int id)
         {
-            Gerente gerente = _context.Gerentes.FirstOrDefault(gerente => Gerente.Id == id);
+            Gerente gerente = _context.Gerentes.FirstOrDefault(gerente => gerente.Id == id);
             if(gerente != null)
             {
                 ReadGerenteDto gerenteDto = _mapper.Map<ReadGerenteDto>(gerente);
