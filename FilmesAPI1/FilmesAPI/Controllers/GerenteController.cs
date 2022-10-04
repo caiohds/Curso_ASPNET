@@ -26,7 +26,7 @@ namespace FilmesAPI.Controllers
             _context.SaveChanges();
             return CreatedAtAction(nameof(RecuperaGerentesPorId), new { Id = gerente.Id }, gerente);
         }
-
+        [HttpGet("{id}")]
         public IActionResult RecuperaGerentesPorId (int id)
         {
             Gerente gerente = _context.Gerentes.FirstOrDefault(gerente => gerente.Id == id);
