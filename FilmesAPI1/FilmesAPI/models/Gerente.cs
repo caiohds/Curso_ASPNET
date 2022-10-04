@@ -6,7 +6,6 @@ namespace FilmesAPI.models
     {
         [Key]
         [Required]
-
         public int Id { get; set; }
         public string Nome { get; set; }
 
