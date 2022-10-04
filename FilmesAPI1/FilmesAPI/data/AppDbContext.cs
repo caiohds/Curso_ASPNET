@@ -1,6 +1,7 @@
 ﻿using FilmesAPI.models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace FilmesAPI.data
 {
@@ -12,7 +13,14 @@ namespace FilmesAPI.data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Endereco>().HasOne(endereco => endereco.Cinema).WithOne(cinema => cinema.Endereco).HasForeignKey<Cinema>(cinema =>  cinema.EnderecoId) ;
+            builder.Entity<Endereco>()
+                .HasOne(endereco => endereco.Cinema)
+                .WithOne(cinema => cinema.Endereco)
+                .HasForeignKey<Cinema>(cinema =>  cinema.EnderecoId) ;
+            builder.Entity<Cinema>()
+                .HasOne(cinema => cinema.Gerente)
+                .WithMany(gerente => gerente.Cinemas)
+                .HasForeignKey(cinema => cinema.GerenteId);
         }
         public DbSet<Filme> Filmes { get; set; }
         public DbSet<Cinema> Cinemas { get; set; }
