@@ -4,7 +4,7 @@ using System;
 
 namespace FilmesAPI.data
 {
-    public class FilmeContext : DbContext
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)
         {
