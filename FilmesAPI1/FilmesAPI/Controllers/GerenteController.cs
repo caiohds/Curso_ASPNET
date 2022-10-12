@@ -12,7 +12,7 @@ namespace FilmesAPI.Controllers
     [Route("[controller]")]
     public class GerenteController : ControllerBase
     {
-        GerenteService _gerenteService;
+        private GerenteService _gerenteService;
         public GerenteController(GerenteService gerenteService)
         {
             _gerenteService = gerenteService;

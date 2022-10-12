@@ -12,7 +12,7 @@ namespace FilmesAPI.Controllers
     public class SessaoController : ControllerBase
     {
 
-        SessaoService _sessaoService;
+        private SessaoService _sessaoService;
         public SessaoController(SessaoService sessaoService)
         {
             _sessaoService = sessaoService;

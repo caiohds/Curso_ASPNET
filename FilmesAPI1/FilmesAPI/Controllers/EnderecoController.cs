@@ -14,7 +14,7 @@ namespace FilmesAPI.Controllers
     public class EnderecoController : ControllerBase
     {
 
-        EnderecoService _enderecoService;
+        private EnderecoService _enderecoService;
         public EnderecoController(EnderecoService enderecoService)
         {
             _enderecoService = enderecoService;
