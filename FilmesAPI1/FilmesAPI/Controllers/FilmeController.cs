@@ -4,6 +4,7 @@ using FilmesAPI.data.dtos;
 using FilmesAPI.data.dtos.Filme;
 using FilmesAPI.models;
 using FilmesAPI.Services;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -55,27 +56,17 @@ namespace FilmesAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult AtualizaFilme(int id, [FromBody] UpdateFilmeDto filmeDto)
         {
-            Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-            if (filme == null)
-            {
-                return NotFound();
-            }
-            _mapper.Map(filmeDto, filme);
-            _context.SaveChanges();
-            return NoContent();
+            Result resultado = _filmeService.AtualizarFilme(id, filmeDto);
+            if (resultado.IsSuccess) return NoContent();
+            return NotFound();
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeletaFilme(int id)
         {
-            Filme filme = _context.Filmes.FirstOrDefault(filme => filme.Id == id);
-            if (filme == null)
-            {
-                return NotFound();
-            }
-            _context.Remove(filme);
-            _context.SaveChanges();
-            return NoContent();
+            Result resultado = _filmeService.DeletaFilme(id);
+            if (resultado.IsSuccess) return NoContent();
+            return NotFound();
         }
 
     }
