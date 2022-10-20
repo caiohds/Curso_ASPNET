@@ -46,3 +46,8 @@ C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\Usuari
 C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\obj\Debug\net6.0\UsuariosAPI.pdb
 C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\obj\Debug\net6.0\UsuariosAPI.genruntimeconfig.cache
 C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\obj\Debug\net6.0\ref\UsuariosAPI.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
