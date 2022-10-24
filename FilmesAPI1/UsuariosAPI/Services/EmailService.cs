@@ -7,6 +7,12 @@ namespace UsuariosAPI.Services
 {
     public class EmailService
     {
+        private IConfiguration _config;
+        public EmailService(IConfiguration config)
+        {
+            _config = config;
+        }
+
         public void EnviarEmail(string[] destinatario, string assunto, int usuarioId, string code)
         {
             Mensagem mensagem = new Mensagem(destinatario, assunto, usuarioId, code);
@@ -16,7 +22,7 @@ namespace UsuariosAPI.Services
         private MimeMessage CriaCorpoDoEmail(Mensagem mensagem)
         {
             var mensagemDeEmail = new MimeMessage();
-            mensagemDeEmail.From.Add(new MailboxAddress("", "ADICIONAR O REMETENTE"));
+            mensagemDeEmail.From.Add(new MailboxAddress("",_config.GetValue<string>("EmailSettings:From")));
             mensagemDeEmail.To.AddRange(mensagem.Destinatario);
             mensagemDeEmail.Subject = mensagem.Assunto;
             mensagemDeEmail.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = mensagem.Conteudo};
@@ -29,7 +35,11 @@ namespace UsuariosAPI.Services
             {
                 try
                 {
-                    client.Connect("Conexão a fazer");
+                    client.Connect(_config.GetValue<string>("EmailSettings:SmtpServer")
+                        ,_config.GetValue<int>("EmailSettings:Port"),true);
+                    client.AuthenticationMechanisms.Remove("XOUATH2");
+                    client.Authenticate(_config.GetValue<string>("EmailSettings:From"),
+                        _config.GetValue<string>("EmailSettings:Password"));
 
                     client.Send(mensagemDeEmail);
                 }

@@ -51,3 +51,6 @@ C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\Usuari
 C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
 C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\MailKit.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\MimeKit.dll
+C:\Users\caioh\OneDrive\Documents\Projetos_Programacao\Asp net\FilmesAPI1\UsuariosAPI\bin\Debug\net6.0\BouncyCastle.Crypto.dll
