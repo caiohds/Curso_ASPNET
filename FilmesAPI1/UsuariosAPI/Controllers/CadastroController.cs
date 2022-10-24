@@ -23,5 +23,11 @@ namespace UsuariosAPI.Controllers
             if (resultado.IsFailed) return StatusCode(500);
             return Ok(resultado.Successes.FirstOrDefault());
         }
+        [HttpPost("/ativa")]
+        public IActionResult AtivaContaUsuario()
+        {
+
+        }
+
     }
 }
