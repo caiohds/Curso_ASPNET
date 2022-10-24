@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FluentResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using UsuariosAPI.Data;
 using UsuariosAPI.Data.Requests;
 using UsuariosAPI.Models;
@@ -32,8 +33,14 @@ namespace UsuariosAPI.Services
 
         public Result SolicitaResetSenha(SolicitaResetRequest request)
         {
-
-            return Result.Ok();
+            IdentityUser<int> identityUser = _signInManager.UserManager.Users
+                .FirstOrDefault(user => user.NormalizedEmail == request.Email.ToUpper());
+            if(identityUser == null)
+            {
+                return Result.Fail("Email não cadastrado no sistema!");
+            }
+            string codigoDeRecuperacao = _signInManager.UserManager.GeneratePasswordResetTokenAsync(identityUser).Result;
+            return Result.Ok().WithSuccess(codigoDeRecuperacao);
         }
     }
 }
