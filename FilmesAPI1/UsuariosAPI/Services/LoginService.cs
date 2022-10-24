@@ -29,5 +29,11 @@ namespace UsuariosAPI.Services
             }
             return Result.Fail("Login Falhou");
         }
+
+        public Result SolicitaResetSenha(SolicitaResetRequest request)
+        {
+
+            return Result.Ok();
+        }
     }
 }
