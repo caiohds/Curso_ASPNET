@@ -12,11 +12,13 @@ namespace UsuariosAPI.Services
 
         IMapper _mapper;
         private UserManager<IdentityUser<int>> _userManager;
+        private EmailService _emailService;
 
-        public CadastroService(IMapper mapper, UserManager<IdentityUser<int>> userManager)
+        public CadastroService(IMapper mapper, UserManager<IdentityUser<int>> userManager, EmailService emailService)
         {
             _mapper = mapper;
             _userManager = userManager;
+            _emailService = emailService;
         }
 
         public Result CadastraUsuario(CreateUsuarioDto dto)
@@ -27,6 +29,7 @@ namespace UsuariosAPI.Services
             if (resultadoIdentity.Result.Succeeded) 
             {
                 string code = _userManager.GenerateEmailConfirmationTokenAsync(usuarioIdenty).Result;
+                _emailService.EnviarEmail(new[] {usuarioIdenty.Email}, "Link de Ativação", usuarioIdenty.Id, code);
                 return Result.Ok().WithSuccess(code);
             } 
             return Result.Fail("Falha ao cadastrar o usuário!");
