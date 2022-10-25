@@ -25,7 +25,8 @@ namespace UsuariosAPI.Services
             {
                 var identityUser = _signInManager.UserManager.Users
                     .FirstOrDefault(usuario => usuario.NormalizedUserName == request.Username.ToUpper());
-                Token token = _tokenService.CreateToken(identityUser);
+                Token token = _tokenService.CreateToken(identityUser,
+                    _signInManager.UserManager.GetRolesAsync(identityUser).Result.FirstOrDefault());
                 return Result.Ok().WithSuccess(token.Value);
             }
             return Result.Fail("Login Falhou");

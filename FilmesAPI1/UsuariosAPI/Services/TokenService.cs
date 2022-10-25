@@ -9,7 +9,7 @@ namespace UsuariosAPI.Services
 {
     public class TokenService
     {
-        public Token CreateToken(IdentityUser<int> usuario)
+        public Token CreateToken(IdentityUser<int> usuario, string? v)
         {
             Claim[] direitosUsuario = new Claim[]
             {
