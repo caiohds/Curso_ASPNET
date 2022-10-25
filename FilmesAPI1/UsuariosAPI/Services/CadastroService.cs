@@ -29,7 +29,7 @@ namespace UsuariosAPI.Services
             Usuario usuario = _mapper.Map<Usuario>(dto);
             IdentityUser<int> usuarioIdenty = _mapper.Map<IdentityUser<int>>(usuario);
             var resultadoIdentity = _userManager.CreateAsync(usuarioIdenty,dto.Senha).Result;
-            
+            _userManager.AddToRoleAsync(usuarioIdenty, "regular");
            
             if (resultadoIdentity.Succeeded) 
             {
