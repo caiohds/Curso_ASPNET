@@ -20,11 +20,11 @@ namespace UsuariosAPI.Services
 
         public Result LogarUsuario(LoginRequest request)
         {
-            var resultadoIdentity = _signInManager.PasswordSignInAsync(request.Username, request.Senha,false,false);
-            if (resultadoIdentity.Result.Succeeded) 
+            var resultadoIdentity = _signInManager.PasswordSignInAsync(request.Username, request.Senha, false, false);
+            if (resultadoIdentity.Result.Succeeded)
             {
                 var identityUser = _signInManager.UserManager.Users
-                    .FirstOrDefault(usuario => usuario.NormalizedUserName ==  request.Username.ToUpper());
+                    .FirstOrDefault(usuario => usuario.NormalizedUserName == request.Username.ToUpper());
                 Token token = _tokenService.CreateToken(identityUser);
                 return Result.Ok().WithSuccess(token.Value);
             }
@@ -33,14 +33,29 @@ namespace UsuariosAPI.Services
 
         public Result SolicitaResetSenha(SolicitaResetRequest request)
         {
-            IdentityUser<int> identityUser = _signInManager.UserManager.Users
-                .FirstOrDefault(user => user.NormalizedEmail == request.Email.ToUpper());
-            if(identityUser == null)
+            IdentityUser<int> identityUser = RecuperaUsuarioPorEmail(request.Email);
+            if (identityUser == null)
             {
                 return Result.Fail("Email não cadastrado no sistema!");
             }
             string codigoDeRecuperacao = _signInManager.UserManager.GeneratePasswordResetTokenAsync(identityUser).Result;
             return Result.Ok().WithSuccess(codigoDeRecuperacao);
+        }
+
+
+
+        public Result ResetaSenha(EfetuaResetRequest request)
+        {
+            IdentityUser<int> identityUser = RecuperaUsuarioPorEmail(request.Email);
+            IdentityResult resultadoIdentity = _signInManager.UserManager
+                .ResetPasswordAsync(identityUser, request.Token, request.Senha).Result;
+            if (resultadoIdentity.Succeeded) return Result.Ok().WithSuccess("Senha redefinida com sucesso!");
+            return Result.Fail("Houve um erro na operação");
+        }
+        private IdentityUser<int> RecuperaUsuarioPorEmail(string email)
+        {
+            return _signInManager.UserManager.Users
+                .FirstOrDefault(user => user.NormalizedEmail == email.ToUpper());
         }
     }
 }
