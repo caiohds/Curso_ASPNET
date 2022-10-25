@@ -28,10 +28,10 @@ namespace UsuariosAPI.Services
         {
             Usuario usuario = _mapper.Map<Usuario>(dto);
             IdentityUser<int> usuarioIdenty = _mapper.Map<IdentityUser<int>>(usuario);
-            var resultadoIdentity = _userManager.CreateAsync(usuarioIdenty,dto.Senha).Result;
+            Task<IdentityResult> resultadoIdentity = _userManager.CreateAsync(usuarioIdenty,dto.Senha);
             _userManager.AddToRoleAsync(usuarioIdenty, "regular");
-           
-            if (resultadoIdentity.Succeeded) 
+
+            if (resultadoIdentity.Result.Succeeded) 
             {
                 string code = _userManager.GenerateEmailConfirmationTokenAsync(usuarioIdenty).Result;
                 var encodedCode = HttpUtility.UrlEncode(code);

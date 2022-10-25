@@ -2,11 +2,12 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace UsuariosAPI.Data
 {
     public class UserDbContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
     {
-        private IConfiguration _configuration;
+       
         public UserDbContext(DbContextOptions<UserDbContext> opt) : base(opt)
         {
 
@@ -27,13 +28,13 @@ namespace UsuariosAPI.Data
             };
             PasswordHasher<IdentityUser<int>> hasher = new PasswordHasher<IdentityUser<int>>();
 
-            admin.PasswordHash = hasher.HashPassword(admin,_configuration.GetValue<string>("admininfo:password"));
+            admin.PasswordHash = hasher.HashPassword(admin,"admininfo:password");
             builder.Entity<IdentityUser<int>>().HasData(admin);
 
             builder.Entity<IdentityRole<int>>().HasData(new IdentityRole<int>
             { Id = 999, Name = "admin", NormalizedName = "ADMIN" });
             builder.Entity<IdentityRole<int>>().HasData(new IdentityRole<int>
-            { Id = 30, Name = "relugar", NormalizedName = "REGULAR" });    
+            { Id = 150, Name = "relugar", NormalizedName = "REGULAR" });
             builder.Entity<IdentityUserRole<int>>().HasData(new IdentityUserRole<int> { RoleId = 999, UserId = 999 });
         }
     }
