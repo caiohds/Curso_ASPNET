@@ -6,7 +6,7 @@ namespace UsuariosAPI.Data
 {
     public class UserDbContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
     {
-
+        private IConfiguration _configuration;
         public UserDbContext(DbContextOptions<UserDbContext> opt) : base(opt)
         {
 
@@ -27,7 +27,7 @@ namespace UsuariosAPI.Data
             };
             PasswordHasher<IdentityUser<int>> hasher = new PasswordHasher<IdentityUser<int>>();
 
-            admin.PasswordHash = hasher.HashPassword(admin,"Admin123@");
+            admin.PasswordHash = hasher.HashPassword(admin,_configuration.GetValue<string>("admininfo:password"));
             builder.Entity<IdentityUser<int>>().HasData(admin);
 
             builder.Entity<IdentityRole<int>>().HasData(new IdentityRole<int>

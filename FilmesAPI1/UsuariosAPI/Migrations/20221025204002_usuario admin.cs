@@ -8,6 +8,7 @@ namespace UsuariosAPI.Migrations
 {
     public partial class usuarioadmin : Migration
     {
+        
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
