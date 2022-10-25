@@ -11,7 +11,7 @@ using UsuariosAPI.Data;
 namespace UsuariosAPI.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20221025203224_usuario admin")]
+    [Migration("20221025204002_usuario admin")]
     partial class usuarioadmin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,8 +50,8 @@ namespace UsuariosAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            ConcurrencyStamp = "a9558069-7d15-46f2-b480-1ac25f56c34a",
+                            Id = 999,
+                            ConcurrencyStamp = "99a635ce-f5c5-4461-828f-1cc051c41ce0",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -146,17 +146,17 @@ namespace UsuariosAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = 999,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7215e5f8-0094-4404-b95d-6ca852130a3d",
+                            ConcurrencyStamp = "a95315d9-c34f-47e6-99f0-e49dca546fd9",
                             Email = "caiohds2020@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "CAIOHDS2020@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIUOtk8IBwUnsPzNRYStWJn5LA3TuHa8yzsfzc3QVJBeN303NdjQ/+dJiqX4p/970A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJpHCMmdf8hLRXhdX6hPc2PTFqZPUBp2VR2E61FTDp+yZzkM+edimBGvM6JEMVV+3Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4e780b7-1c7e-4739-a6e9-31643dd84c29",
+                            SecurityStamp = "82ba6219-7716-4108-9e67-908db2ddeb45",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -222,8 +222,8 @@ namespace UsuariosAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 1,
-                            RoleId = 1
+                            UserId = 999,
+                            RoleId = 999
                         });
                 });
 

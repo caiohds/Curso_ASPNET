@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UsuariosAPI.Migrations
 {
-    public partial class Criandousuário : Migration
+    public partial class usuarioadmin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -187,6 +187,21 @@ namespace UsuariosAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { 999, "99a635ce-f5c5-4461-828f-1cc051c41ce0", "admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { 999, 0, "a95315d9-c34f-47e6-99f0-e49dca546fd9", "caiohds2020@gmail.com", true, false, null, "CAIOHDS2020@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEJpHCMmdf8hLRXhdX6hPc2PTFqZPUBp2VR2E61FTDp+yZzkM+edimBGvM6JEMVV+3Q==", null, false, "82ba6219-7716-4108-9e67-908db2ddeb45", false, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { 999, 999 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
