@@ -5,6 +5,7 @@ using UsuariosAPI.Data;
 using UsuariosAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var y = builder.Configuration.GetValue<string>("admininfo:password");
 
 // Add services to the container.
 builder.Services.AddDbContext<UserDbContext>(opts =>

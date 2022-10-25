@@ -6,9 +6,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UsuariosAPI.Migrations
 {
-    public partial class usuarioadmin : Migration
+    public partial class CorrigindoMigration : Migration
     {
-        
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
@@ -192,12 +191,17 @@ namespace UsuariosAPI.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { 999, "99a635ce-f5c5-4461-828f-1cc051c41ce0", "admin", "ADMIN" });
+                values: new object[] { 150, "ed8e43e4-8988-4480-8ef0-8a81d65449df", "regular", "REGULAR" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { 999, "565e2e1e-46d6-4571-8620-917e6f769a9b", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { 999, 0, "a95315d9-c34f-47e6-99f0-e49dca546fd9", "caiohds2020@gmail.com", true, false, null, "CAIOHDS2020@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEJpHCMmdf8hLRXhdX6hPc2PTFqZPUBp2VR2E61FTDp+yZzkM+edimBGvM6JEMVV+3Q==", null, false, "82ba6219-7716-4108-9e67-908db2ddeb45", false, "admin" });
+                values: new object[] { 999, 0, "c5618582-5396-4341-90fb-c30ea42f82aa", "caiohds2020@gmail.com", true, false, null, "CAIOHDS2020@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEFasWB9EbSMDyteFafKFTmpU8Bv7+MIbITxv/j28ZcM9tlH1jGJcZwcxOjeN74+zqw==", null, false, "4f2f46da-0921-4de1-8bda-661c0bb5d9e9", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

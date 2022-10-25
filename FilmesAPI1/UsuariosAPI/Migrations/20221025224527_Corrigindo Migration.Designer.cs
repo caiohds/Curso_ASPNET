@@ -11,8 +11,8 @@ using UsuariosAPI.Data;
 namespace UsuariosAPI.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20221025213540_criando role regular")]
-    partial class criandoroleregular
+    [Migration("20221025224527_Corrigindo Migration")]
+    partial class CorrigindoMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,15 +51,15 @@ namespace UsuariosAPI.Migrations
                         new
                         {
                             Id = 999,
-                            ConcurrencyStamp = "ed60d207-2fa2-409d-ba3d-5e09b16717dd",
+                            ConcurrencyStamp = "565e2e1e-46d6-4571-8620-917e6f769a9b",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 150,
-                            ConcurrencyStamp = "141662a5-32bb-4a8b-a69a-4c1e938f5401",
-                            Name = "relugar",
+                            ConcurrencyStamp = "ed8e43e4-8988-4480-8ef0-8a81d65449df",
+                            Name = "regular",
                             NormalizedName = "REGULAR"
                         });
                 });
@@ -155,15 +155,15 @@ namespace UsuariosAPI.Migrations
                         {
                             Id = 999,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "51bfa365-a1a8-4352-9ffd-de597613f68f",
+                            ConcurrencyStamp = "c5618582-5396-4341-90fb-c30ea42f82aa",
                             Email = "caiohds2020@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "CAIOHDS2020@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAWlDXHWbRSz0jiOv5D2PPSsW0KQLHVz8rzJgELMaQUxpLPrMhYoVzLKS346xaFPwA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFasWB9EbSMDyteFafKFTmpU8Bv7+MIbITxv/j28ZcM9tlH1jGJcZwcxOjeN74+zqw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7d32d998-d845-462a-9d30-306f730f73eb",
+                            SecurityStamp = "4f2f46da-0921-4de1-8bda-661c0bb5d9e9",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
