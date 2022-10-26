@@ -1,3 +1,4 @@
+using FilmesAPI.Authorization;
 using FilmesAPI.data;
 using FilmesAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -33,6 +34,13 @@ builder.Services.AddAuthentication(auth =>
         ValidateAudience = false,
         ClockSkew = TimeSpan.Zero
     };
+});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("IdadeMinima", policy =>
+    {
+        policy.Requirements.Add(new IdadeMinimaRequired(18))
+    });
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
