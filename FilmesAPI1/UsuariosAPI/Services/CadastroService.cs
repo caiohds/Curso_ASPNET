@@ -27,7 +27,7 @@ namespace UsuariosAPI.Services
         public Result CadastraUsuario(CreateUsuarioDto dto)
         {
             Usuario usuario = _mapper.Map<Usuario>(dto);
-            IdentityUser<int> usuarioIdenty = _mapper.Map<CustomIdentityUser>(usuario);
+            CustomIdentityUser usuarioIdenty = _mapper.Map<CustomIdentityUser>(usuario);
             var resultadoIdentity = _userManager.CreateAsync(usuarioIdenty,dto.Senha).Result;
             var createRoleResult = _roleManager.CreateAsync(new IdentityRole<int>("regular")).Result;
             var usuarioRoleResult = _userManager.AddToRoleAsync(usuarioIdenty, "regular").Result;
