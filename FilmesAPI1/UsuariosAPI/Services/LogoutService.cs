@@ -1,5 +1,6 @@
 ﻿using FluentResults;
 using Microsoft.AspNetCore.Identity;
+using UsuariosAPI.Models;
 
 namespace UsuariosAPI.Services
 {
