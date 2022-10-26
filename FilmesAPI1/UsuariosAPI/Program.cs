@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UsuariosAPI.Data;
+using UsuariosAPI.Models;
 using UsuariosAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ var y = builder.Configuration.GetValue<string>("admininfo:password");
 // Add services to the container.
 builder.Services.AddDbContext<UserDbContext>(opts =>
 opts.UseMySql(builder.Configuration.GetConnectionString("UsuarioConnection"), new MySqlServerVersion(new Version(8, 0))));
-builder.Services.AddIdentity<IdentityUser<int>, IdentityRole<int>>(
+builder.Services.AddIdentity<CustomIdentityUser, IdentityRole<int>>(
     opts => opts.SignIn.RequireConfirmedEmail = true)
     .AddEntityFrameworkStores<UserDbContext>().AddDefaultTokenProviders();
 builder.Services.AddScoped<CadastroService, CadastroService>();
