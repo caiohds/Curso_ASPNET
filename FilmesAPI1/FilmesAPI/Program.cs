@@ -2,6 +2,7 @@ using FilmesAPI.Authorization;
 using FilmesAPI.data;
 using FilmesAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -42,6 +43,7 @@ builder.Services.AddAuthorization(options =>
         policy.Requirements.Add(new IdadeMinimaRequired(18));
     });
 });
+builder.Services.AddSingleton<IAuthorizationHandler, IdadeMinimaHandler>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

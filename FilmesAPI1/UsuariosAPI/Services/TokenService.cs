@@ -15,7 +15,8 @@ namespace UsuariosAPI.Services
             {
                 new Claim("UserName",usuario.UserName),
                 new Claim("Id",usuario.Id.ToString()),
-                new Claim(ClaimTypes.Role,role)
+                new Claim(ClaimTypes.Role,role),
+                new Claim(ClaimTypes.DateOfBirth,usuario.DataNascimento.ToString())
             };
             var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("0asdjas09djsa09djasdjsadajsd09asjd09sajcnzxn"));
             var credenciais = new SigningCredentials(chave, SecurityAlgorithms.HmacSha256);
