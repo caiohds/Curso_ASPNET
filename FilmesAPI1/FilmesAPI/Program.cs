@@ -39,7 +39,7 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("IdadeMinima", policy =>
     {
-        policy.Requirements.Add(new IdadeMinimaRequired(18))
+        policy.Requirements.Add(new IdadeMinimaRequired(18));
     });
 });
 builder.Services.AddEndpointsApiExplorer();
